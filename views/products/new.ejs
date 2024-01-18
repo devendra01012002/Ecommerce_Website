@@ -1,0 +1,41 @@
+<%layout('layouts/bollerplate')%>
+    <%- include('../partials/navbar') %>
+        <div class="row">
+          <div class="col-6 mx-auto">
+            <form action="/products" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div id="validationServer04Feedback" class="invalid-feedback">
+                        Please select a valid name.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="img">Image Url:</label>
+                    <input type="text" class="form-control" name="img" id="img" placeholder="Enter image URL" required>
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                    <div id="validationServer04Feedback" class="invalid-feedback">
+                        Please select a valid image url.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="name">Price:</label>
+                    <input type="text" class="form-control" name="price" id="name" placeholder="Enter Price">
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="name">Name:</label>
+                    <textarea name="desc" id="desc"  rows="3" placeholder="description"></textarea>
+                </div>
+                <button class="btn  btn-success" type="submit">Add Product</button>
+            </form>
+          </div>
+           
+        </div>
+        </div>
+

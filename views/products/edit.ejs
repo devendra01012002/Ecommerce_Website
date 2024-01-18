@@ -1,0 +1,45 @@
+<%layout('layouts/bollerplate')%>
+    <%- include('../partials/navbar') %>
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <form class="needs-validation" action="/products/<%=foundProduct._id%>?_method=PATCH" method="post" novalidate >
+                    <div class="mb-3">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product" value="<%= foundProduct.name %>" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            Please select a valid name.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="img">Image Url:</label>
+                        <input type="text" class="form-control" name="img" id="img" placeholder="Enter image URL" value="<%= foundProduct.img %>" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            Please select a valid image url.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price">Price:</label>
+                        <input type="text" class="form-control" name="price" id="price" placeholder="Enter Price" value="<%= foundProduct.price %>" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div id="validationServer04Feedback" class="invalid-feedback">
+                            Please enter a valid price.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="desc">description:</label>
+                        <textarea name="desc" id="desc" rows="3" placeholder="description"> <%= foundProduct.desc %>"</textarea>
+                    </div>
+                    <button class="btn  btn-success" type="submit">Add Product</button>
+                </form>
+            </div>
+
+        </div>
+        </div>

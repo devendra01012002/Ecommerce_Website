@@ -1,0 +1,26 @@
+
+<%layout('layouts/bollerplate')%>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %>
+    <div class="row">
+   <% for(let i of products){ %>
+    <div class="col-lg-3 mt-3">
+    <div class="card shadow mx-auto m-3" style="width: 18rem; height:25rem">
+        <img src="<%=i.img %>" class="card-img-top" alt="..." style="overflow: hidden;">
+        <div class="card-body">
+            <h5 class="card-title"><%=i.name%></h5>
+            <h5 class="card-title"><%=i.price%></h5>
+            <p class="card-text"><%= i.desc %></p>
+            <a href="/products/<%=i._id%>" class="btn btn-primary info">View Product</a>
+            <% if(currentUser && currentUser.role==='seller' ){ %>
+            <form class="d-inline-block" action="/products/<%=i._id%>?_method=DELETE" method="post">
+           
+                <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+          
+            </form>
+            <% } %>
+        </div>
+    </div>
+    </div>
+   <% } %>
+</div>

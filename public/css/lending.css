@@ -1,0 +1,29 @@
+body{
+    background-repeat: no-repeat;
+    background-image: url('https://www.myukmailbox.com/blog/wp-content/uploads/2022/03/online-shopping-apps.jpg');
+    background-size: cover;
+
+}
+.navbar{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(93, 151, 151);
+    position: sticky;
+}
+.navbar a{
+    margin: 5px;
+    text-decoration: none;
+    color: rgb(18, 226, 98); ;
+}
+.transparent-text {
+    color: rgba(255, 255, 255, 0.5);
+    /* Adjust the last parameter (0.5) for transparency */
+    font-size: 24px;
+    /* Adjust the font size as needed */
+   margin:300px;
+   margin-left: 400px;
+   color:rgb(172, 61, 9);
+   font-weight: 1000;
+   font-size: 3rem;
+}

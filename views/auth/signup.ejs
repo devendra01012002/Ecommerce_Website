@@ -1,0 +1,35 @@
+<%layout('layouts/bollerplate')%>
+<div class="row">
+    <div class="col-md-6 mx-auto col-md-6 mx-auto shadow p-3 m-5 bg-white rounded border border-dark">
+        <h1 class="display-6"><strong>SignUp</strong></h1>
+        <%- include('../partials/flash') %>
+        <form action="/register" method="post">
+            <div>
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="username" placeholder="enter username">
+            </div>
+            <div>
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" class="form-control" name="email" placeholder="enter email">
+            </div>
+            <div>
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password" placeholder="enter password">
+            </div>
+             <div class="mb-3">
+                <p class="mb-2">Wants to register as ?</p>
+                <div class="mx-2">
+                    <label for="buyer" class="form-check-label" id="gridRadios3">Buyer:</label>
+                    <input type="radio" class="form-check-input" name="role" id="buyer" value="buyer">
+                </div>
+                <div class="mx-2">
+                    <label for="seller" class="form-check-label" id="gridRadios2">Seller:</label>
+                    <input type="radio" class="form-check-input" name="role" id="seller" value="seller">
+                </div>
+             </div>
+            <button class="btn btn-sm btn-success mb-2">Submit</button>
+            <p>Already have an account <a href="/login">Login</a></p>
+        </form>
+
+    </div>
+</div>
