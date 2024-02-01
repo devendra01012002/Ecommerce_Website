@@ -1,0 +1,14 @@
+.index-main{
+    background-color: #ccc;
+}
+body{
+    background-color: #ccc;
+}
+.card-text-background{
+    background-color: rgba(135, 156, 153, 0.973);
+}
+.card-main{
+    box-shadow: 10px 1px 1px hsl(61, 90%, 35%);
+    max-width: cover;
+   
+}

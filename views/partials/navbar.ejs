@@ -1,14 +1,14 @@
-<nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
+<nav class="navbar navbar-expand-lg bg-primary-subtle nav-d1">
+    <div class="container-fluid nav-d2">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand" href="#">Shopping App</a>
+            <a class="navbar-brand text-decoration-none fs-3" href="#">SHOPPING APP</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/products">Home</a>
+                    <a class="nav-link text-decoration-none active" aria-current="page" href="/products">Home</a>
                 </li>
                 <% if(currentUser && currentUser.role==='seller'){ %>
                 <li class="nav-item">
@@ -25,14 +25,14 @@
            </div>
        <% } else { %>
         
-        <a href="/user/cart" class="nav-link mx-2">
+        <a href="/user/cart" class="nav-link mx-2 mx-3">
         <i class="fa-solid fa-cart-shopping"></i>
         <sup><span class="badge bg-danger"><%= currentUser.cart.length %></span></sup>
         </a>
         <form action="/logout" method="post">
-            <button type="submit">logout</button>
+            <button type="submit" class="btn btn-success mx-3">logout</button>
         </form>
-        <a href="#">Hello <%=currentUser.username %></a>
+        <a href="#" class="text-decoration-none mr-2 "> <%=currentUser.username %></a>
       <% } %>
 
         </div>

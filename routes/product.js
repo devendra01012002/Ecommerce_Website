@@ -29,8 +29,6 @@ router.get('/products/new',isLoggedIn,(req, res)=> {
 
 // to actually add the product
 router.post('/products',validateProduct,isLoggedIn ,isSeller, async (req, res) => {
-    
-
     try {
         let { name, img, price, desc} = req.body;
         await Product.create({ name, img, price, desc,author:req.user._id });
@@ -63,9 +61,7 @@ router.get('/products/:id/edit', isLoggedIn,isSeller,async (req, res) => {
     try {
         let { id } = req.params;
         let foundProduct = await Product.findById(id);
-        
         res.render('products/edit', { foundProduct });
-
     }
     catch (e) {
         res.status(500).render('error', { err: e.message });
