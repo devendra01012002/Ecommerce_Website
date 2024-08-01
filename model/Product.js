@@ -1,48 +1,61 @@
 const mongoose = require('mongoose');
-const Review=require('../model/review');
+const Review = require('../model/review');
 
 const productSchema = new mongoose.Schema({
     name: {
-        required: true,
-        type: 'string',
-        trim:true,
-    },
-    img: {
-        type: 'string',
-        required: true,
-        trim:true
-    },
-    price:{
-        type: 'number',
+        type: String,
         required: true,
         trim: true,
-        min:0
+    },
+    img: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    price: {
+        type: Number,
+        required: true,
+        trim: true,
+        min: 0
+    },
+    originalprice: {
+        type: Number,
+        required: true,
+        trim: true,
+        min: 0
+    },
+    brand: {
+        type: String,
+        required: true,
+        trim: true,
     },
     desc: {
-        type: 'string',
+        type: String,
         trim: true
+    },
+    category: {
+        type: String,
+        required: true,
+        trim: true,
+        enum: ['mobile', 'laptop', 'mens', 'womens', 'electronics', 'home', 'sports', 'fashion', 'beauty', 'automotive'] // add more categories as needed
     },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref:'Review'
-         }
+            ref: 'Review'
+        }
     ],
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'User'
+        ref: 'User'
     }
-})
+});
 
-//middleware that behind the scencs mongodb operation karwane par use hote hai and iske andar pre and post middleware hote hain which are 
-// basically used over the schema and before the model is js class.
-
-productSchema.post('findOneAndDelete',async function (product) {
+productSchema.post('findOneAndDelete', async function (product) {
     if (product.reviews.length > 0) {
         await Review.deleteMany({ _id: { $in: product.reviews } });
     }
-})
+});
 
 let Product = mongoose.model('Product', productSchema);
 module.exports = Product;
-       

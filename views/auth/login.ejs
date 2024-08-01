@@ -1,23 +1,57 @@
 <%layout('layouts/bollerplate')%>
-
-    <div class="row">
-        <div class="col-md-6 mx-auto shadow p-3 m-5 bg-white rounded border border-dark">
-            <h1 class="display-5">Login</h1>
-            <%- include('../partials/flash') %>
-                <form action="/login" method="post">
-                    <div>
-                        <label for="username" class="form-label">Username:</label>
-                        <input type="text" class="form-control" name="username">
-                    </div>
-                    <div>
-                        <label for="password" class="form-label">Password:</label>
-                        <input type="password" class="form-control" name="password">
-                    </div>
-                    <button class="btn btn-sm btn-success mt-2 mb-3">Submit</button>
-                </form>
-                <div>
-                    Don't have an account <a href="/register">Register</a>
+    <div class="login-body">
+        <div class="login-main">
+           <div class="login-logo">
+                 E-Bazzar
+           </div>
+           <div class="login-welcome">
+                <h1>Welcome Back</h1>
+           </div>
+           <div class="login-text">
+                <p>please login to your account</p>
+           </div>
+           <form action="/login" method="post">
+           <div class="login-email">
+                <input type="text" class="form-control" placeholder="Username" name="username">
+           </div>
+           <div class="login-password">
+                <input type="password" class="form-control" name="password" placeholder="password">
+           </div>
+           <div class="login-forgot-password">
+                <a href="#">Forgot Password?</a>
+           </div>
+           <div class="login-button">
+            <button type="submit">Submit</button>
+           </div>
+        </form>
+           <div class="login-orLogin">
+                <p>Or Login with</p>
+           </div>
+           <div class="login-SocialMedia">
+                <div class="login-SocialMedia-facebook">
+                    <a href="#"><i class="fab fa-facebook-f"></i>Facebook</a>
                 </div>
-
+                <div class="login-SocialMedia-google">
+                    <a href="#"><i class="fab fa-google"></i>Google</a>
+                </div>
+           </div>
+           <div class="login-Signup">
+                <p>Don't have an account <a href="/register">Register</a></p>
+           </div>
         </div>
     </div>
+    <!-- <%- include('../partials/flash') %>
+        <form action="/login" method="post">
+            <div>
+                <label for="username" class="form-label">Username:</label>
+                <input type="text" class="form-control" name="username">
+            </div>
+            <div>
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control" name="password">
+            </div>
+            <button class="btn btn-sm btn-success mt-2 mb-3">Submit</button>
+        </form>
+        <div>
+            Don't have an account <a href="/register">Register</a>
+        </div> -->

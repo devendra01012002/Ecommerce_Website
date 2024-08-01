@@ -1,6 +1,6 @@
 <%layout('layouts/bollerplate')%>
     <%- include('../partials/navbar') %>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-6 mx-auto">
             <form action="/products" method="post" class="needs-validation" novalidate>
                 <div class="mb-3">
@@ -37,4 +37,109 @@
            
         </div>
         </div>
+ -->
 
+ <div class="row">
+    <div class="col-6 mx-auto">
+        <form action="/products" method="post" class="needs-validation" novalidate>
+            <!-- Product Name -->
+            <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Enter Product Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid product name.
+                </div>
+            </div>
+
+            <!-- Image URL -->
+            <div class="mb-3">
+                <label for="img">Image Url:</label>
+                <input type="text" class="form-control" name="img" id="img" placeholder="Enter Image URL" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid image URL.
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="mb-3">
+                <label for="price">Price:</label>
+                <input type="number" class="form-control" name="price" id="price" placeholder="Enter Price" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid price.
+                </div>
+            </div>
+
+            <!-- Original Price -->
+            <div class="mb-3">
+                <label for="originalprice">Original Price:</label>
+                <input type="number" class="form-control" name="originalprice" id="originalprice" placeholder="Enter Original Price" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid original price.
+                </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="mb-3">
+                <label for="brand">Brand:</label>
+                <input type="text" class="form-control" name="brand" id="brand" placeholder="Enter Brand Name" required>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid brand name.
+                </div>
+            </div>
+
+            <!-- Category -->
+            <div class="mb-3">
+                <label for="category">Category:</label>
+                <select class="form-control" name="category" id="category" required>
+                    <option value="" disabled selected>Select a Category</option>
+                    <option value="mobile">Mobile</option>
+                    <option value="laptop">Laptop</option>
+                    <option value="mens">Mens</option>
+                    <option value="womens">Womens</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="home">Home</option>
+                    <option value="sports">Sports</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="automotive">Automotive</option>
+                </select>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please select a valid category.
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div class="mb-3">
+                <label for="desc">Description:</label>
+                <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Enter Product Description"></textarea>
+                <div class="valid-feedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback">
+                    Please enter a valid description.
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="mt-2 btn btn-success" type="submit">Add Product</button>
+        </form>
+    </div>
+</div>

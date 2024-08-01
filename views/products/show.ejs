@@ -1,8 +1,8 @@
 <%layout('layouts/bollerplate')%>
     <%- include('../partials/navbar') %>
     <!-- Displaying flash -->
-<button%- include('../partials/flash') %>
-       <div class="row">
+<%- include('../partials/flash') %>
+       <!-- <div class="row">
               <div class="col-lg-6 mt-3" >
 
                     <div class="card shadow mx-auto" style="width: 18rem; height: 25rem;">
@@ -26,7 +26,74 @@
                             <% } %>
                         </div>
                     </div>
+                </div> -->
+                <div class="py-3 py-md-5 bg-light">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-5 mt-3">
+                                <div class="bg-white border">
+                                    <img src="<%=foundProduct.img %>" class="w-100" alt="Img">
+                                </div>
+                            </div>
+                            <div class="col-md-7 mt-3">
+                                <div class="product-view">
+                                    <h4 class="product-name">
+                                        <%=foundProduct.name%>
+                                        <label class="label-stock bg-success">In Stock</label>
+                                    </h4>
+                                    <hr>
+                                    <p class="product-path">
+                                        Home / Category / Product /  <%= foundProduct.category %>
+                                    </p>
+                                    <div>
+                                        <span class="selling-price">$<%=foundProduct.price%></span>
+                                        <span class="original-price"> $<%= foundProduct.originalprice %></span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <div class="input-group">
+                                            <span class="btn btn1"><i class="fa fa-minus"></i></span>
+                                            <input type="text" value="1" class="input-quantity" />
+            
+                                            <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="mt-2">
+                                        <form action="/user/<%=foundProduct._id%>/add" method="POST" class="d-inline-block">
+                                            <button type="submit"class="btn btn1"><i class="fa fa-shopping-cart"></i> Add To Cart</button>
+                                        </form>
+                                        <form action="/user/<%=foundProduct._id%>/addwishlist" method="POST" class="d-inline-block">
+                                            <button type="submit"class="btn btn1"><i class="fa fa-heart"></i> Add To Wishlist</button>
+                                        </form>
+                                    </div>
+                                    <div class="mt-3">
+                                        <h5 class="mb-0">Small Description</h5>
+                                        <p>
+                                            <%= foundProduct.desc %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 mt-3">
+                                <div class="card">
+                                    <div class="card-header bg-white">
+                                        <h4>Description</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>
+                                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+                <!-- Review portion -->
                <div class="col-lg-4">   
             <h1 class="display-5">Leave a Review</h1>
             <form class="needs-validation" action="/products/<%=foundProduct._id%>/review" method="post" novalidate>
@@ -75,3 +142,9 @@
             </div>
        </div>
     </div>
+
+
+
+
+    <!-- category 
+     large description-->

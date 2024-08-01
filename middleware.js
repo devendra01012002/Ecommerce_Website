@@ -41,9 +41,15 @@ const isSeller = (req, res, next) => {
     next();
 }
 const isProductAuthor = async (req, res, next) => {
-    let {id} = req.params;
+    let { id } = req.params;
     let product = await Product.findById(id);
-    if (!product.author.equals( req.user._id)) {
+    
+    if (!product) {
+        req.flash('error', 'Product not found');
+        return res.redirect('/products');
+    }
+
+    if (!product.author || !product.author.equals(req.user._id)) {
         req.flash('error', 'You are not the authorised User');
         return res.redirect('/products');
     }

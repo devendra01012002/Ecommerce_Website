@@ -16,6 +16,21 @@ router.get('/products', isLoggedIn ,async (req, res) => {
    
 })
 
+//route to get the product of a particular category
+
+router.get('/products/category', async (req, res) => {
+    try {
+        let { category } = req.query;
+        let products = await Product.find({ category });
+        res.render('products/category', { products });
+    } catch (e) {
+        res.status(500).render('error', { err: e.message });
+    }
+});
+
+
+
+
 // to open form for add the product
 router.get('/products/new',isLoggedIn,(req, res)=> {
   
@@ -30,8 +45,8 @@ router.get('/products/new',isLoggedIn,(req, res)=> {
 // to actually add the product
 router.post('/products',validateProduct,isLoggedIn ,isSeller, async (req, res) => {
     try {
-        let { name, img, price, desc} = req.body;
-        await Product.create({ name, img, price, desc,author:req.user._id });
+        let { name, img, price, desc,category,brand,originalprice} = req.body;
+        await Product.create({ name, img, price, desc, author:req.user._id, category, brand, originalprice});
         req.flash('success', 'Added Product Successfully');
         res.redirect('/products');
     }
@@ -47,13 +62,11 @@ router.get('/products/:id',isLoggedIn, async(req, res) => {
     try {
         let { id } = req.params;
         let foundProduct = await Product.findById(id).populate('reviews');
-
         res.render('products/show', { foundProduct ,msg:req.flash('success')})
     }
     catch (e) {
         res.status(500).render('error', { err: e.message });
     }
-    
 })
 
 router.get('/products/:id/edit', isLoggedIn,isSeller,async (req, res) => {
@@ -75,7 +88,7 @@ router.patch('/products/:id',validateProduct,isLoggedIn,isSeller,async (req, res
     try {
         let { id } = req.params;
 
-        let { name, img, price, desc } = req.body;
+        let { name, img, price, desc, category, brand, originalprice } = req.body;
         await Product.findByIdAndUpdate(id, { name, img, price, desc });
         req.flash('success', 'Edit Product Successfully');
         res.redirect(`/products/${id}`);

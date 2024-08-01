@@ -1,0 +1,72 @@
+
+<%layout('layouts/bollerplate')%>
+<%- include('../partials/navbar') %>
+<%- include('../partials/flash') %> 
+
+<!-- Products portion -->
+<div class="py-3 py-md-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="mb-4">Our Products</h4>
+            </div>
+            <% for(let i of products){ %>
+                <div class="col-md-3">
+                <div class="product-card">
+                    <div class="product-card-img">
+                        <label class="stock bg-success">In Stock</label>
+                        <img src="<%=i.img %>" alt="Laptop">
+                    </div>
+                    <div class="product-card-body">
+                        <p class="product-brand"><%=i.brand%></p>
+                        <h5 class="product-name">
+                           <a href="">
+                               <%=i.name%> 
+                            </a>
+                        </h5>
+                        <div>
+                            <span class="selling-price">$<%=i.price%></span>
+                            <span class="original-price">$<%=i.originalprice%></span>
+                        </div>
+                        <div class="mt-2">
+                            <form action="/user/<%=i._id%>/add" method="POST" class="d-inline-block">
+                                <button type="submit" class="btn btn1">Add To cart</button>
+                            </form>
+                            <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
+                            <a href="/products/<%=i._id%>" class="btn btn1"> View </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<%- include('../partials/footer') %>
+
+
+<!-- original price 
+product brand 
+product Categories -->
+<!-- <div class="row index-main">
+<% for(let i of products){ %>
+<div class="col-lg-3 mt-3 ">
+<div class="card shadow mx-auto m-3 card-main" style="width: 18rem; height:25rem">
+    <img src="<%=i.img %>" class="card-img-top" alt="..." style="overflow: hidden;">
+    <div class="card-body card-text-background">
+        <h5 class="card-title"><%=i.name%></h5>
+        <h5 class="card-title "><i class="fa-solid fa-indian-rupee-sign"></i> <%=i.price%></h5>
+        <p class="card-text"><%= i.desc %></p>
+        <a href="/products/<%=i._id%>" class="btn btn-primary info">View Product</a>
+        <% if(currentUser && currentUser.role==='seller' ){ %>
+        <form class="d-inline-block" action="/products/<%=i._id%>?_method=DELETE" method="post">
+       
+            <button class="btn  btn-danger sz-2" type="submit">Delete</button>
+      
+        </form>
+        <% } %>
+    </div>
+</div>
+</div>
+<% } %>
+</div> -->
