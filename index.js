@@ -49,7 +49,7 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 })
-            
+               
 mongoose.connect('mongodb://127.0.0.1:27017/encommerce_holidays')
     .then(() => {   
         console.log("db connection established")

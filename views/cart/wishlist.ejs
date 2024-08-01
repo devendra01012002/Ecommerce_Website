@@ -1,12 +1,13 @@
 <%layout('layouts/bollerplate')%>
 <%- include('../partials/navbar') %>
+
+<% if(currentUser.wishlist.length > 0) { %>
+
 <div class="py-3 py-md-5 bg-light">
     <div class="container">
-
         <div class="row">
             <div class="col-md-12">
-                <div class="shopping-cart">
-                 
+                <div class="shopping-cart">  
                     <div class="cart-header d-none d-sm-none d-mb-block d-lg-block">
                         <div class="row">
                             <div class="col-md-6">
@@ -49,7 +50,7 @@
                             </div>
                             <div class="col-md-2 col-5 my-auto">
                                 <div class="remove">
-                                    <form action="//user/removeWishlist/<%=item._id%>" method="DELETE" class="d-inline-block">
+                                    <form action="/user/removeWishlist/<%=item._id%>?_method=DELETE" method="POST" class="d-inline-block">
                                         <button type="submit" class="btn btn-danger btn-sm"> <i class="fa fa-trash"></i> Remove</button>
                                     </form>
                                 </div>
@@ -64,3 +65,15 @@
 
     </div>
 </div>
+
+<% } else { %>
+    <div class="py-3 py-md-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2>No products in your wishlist</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>

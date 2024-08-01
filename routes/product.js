@@ -5,16 +5,30 @@ const Review = require('../model/review');
 const { validateProduct, isLoggedIn, isSeller, isProductAuthor}  = require('../middleware');
 
 
-router.get('/products', isLoggedIn ,async (req, res) => {
+router.get('/products', isLoggedIn, async (req, res) => {
+    const perPage = 8; // Number of products per page
+    const page = parseInt(req.query.page) || 1; // Current page number
+
     try {
-        let products = await Product.find({})  // find all the products in database
-        res.render('products/index', { products });
+        // Fetch the products with pagination
+        let products = await Product.find({})
+            .skip((perPage * page) - perPage)
+            .limit(perPage);
+
+        // Count the total number of products
+        const count = await Product.countDocuments();
+
+        // Render the page with the products and pagination data
+        res.render('products/index', {
+            products,
+            current: page,
+            pages: Math.ceil(count / perPage) // Total number of pages
+        });
+    } catch (e) {
+        res.status(500).render('error', { err: e.message });
     }
-    catch (e) {
-        res.status(500).render('error', { err:e.message });
-    }
-   
-})
+});
+
 
 //route to get the product of a particular category
 

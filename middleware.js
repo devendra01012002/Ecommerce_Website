@@ -55,9 +55,28 @@ const isProductAuthor = async (req, res, next) => {
     }
     next();
 }
+const isCartAdded = async (req, res, next) => {
+    let { id } = req.params;
+    let cart = req.user.cart;
+    if (cart.includes(id)) {
+        req.flash('error', 'Product already added to cart');
+        return res.redirect(`/products/${id}`);
+    }
+    next();
+}
+const isWishlistAdded = async (req, res, next) => {
+    let { id } = req.params;
+    let wishlist = req.user.wishlist;
+    if (wishlist.includes(id)) {
+        req.flash('error', 'Product already added to wishlist');
+        return res.redirect(`/products/${id}`);
+    }
+    next();
+}
 
 
-module.exports = { validateProduct, validateReview, isLoggedIn ,isSeller,isProductAuthor};
+module.exports = { validateProduct, validateReview, isLoggedIn ,isSeller,isProductAuthor,
+    isWishlistAdded,isCartAdded};
 
 
 

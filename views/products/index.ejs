@@ -40,7 +40,7 @@
                             </div>
                             <div class="col-6 col-md-3">
                                 <div class="category-card">
-                                    <a href="/products/category?category=men">
+                                    <a href="/products/category?category=mens">
                                         <div class="category-card-img">
                                             <img src="images/men-cloths.jpeg" class="w-100" alt="Mens Fashion">
                                         </div>
@@ -91,41 +91,57 @@
             </div>
             <% for(let i of products){ %>
                 <div class="col-md-3">
-                <div class="product-card">
-                    <div class="product-card-img">
-                        <label class="stock bg-success">In Stock</label>
-                        <img src="<%=i.img %>" alt="Laptop">
-                    </div>
-                    <div class="product-card-body">
-                        <p class="product-brand"><%=i.brand%></p>
-                        <h5 class="product-name">
-                           <a href="">
-                               <%=i.name%> 
-                            </a>
-                        </h5>
-                        <div>
-                            <span class="selling-price">$<%=i.price%></span>
-                            <span class="original-price">$<%=i.originalprice%></span>
+                    <div class="product-card">
+                        <div class="product-card-img">
+                            <label class="stock bg-success">In Stock</label>
+                            <img src="<%=i.img %>" alt="Laptop">
                         </div>
-                        <div class="mt-2">
-                            <form action="/user/<%=i._id%>/add" method="POST" class="d-inline-block">
-                                <button type="submit" class="btn btn1">Add To cart</button>
-                            </form>
-                            <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
-                            <a href="/products/<%=i._id%>" class="btn btn1"> View </a>
-                            <% if(currentUser && currentUser.role==='seller' ){ %>
-                                <form class="d-inline-block" action="/products/<%=i._id%>?_method=DELETE" method="post">
-                                    <button class="btn btn1" type="submit">Delete</button>
+                        <div class="product-card-body">
+                            <p class="product-brand"><%=i.brand%></p>
+                            <h5 class="product-name">
+                                <a href="">
+                                   <%=i.name%> 
+                                </a>
+                            </h5>
+                            <div>
+                                <span class="selling-price">$<%=i.price%></span>
+                                <span class="original-price">$<%=i.originalprice%></span>
+                            </div>
+                            <div class="mt-2">
+                                <form action="/user/<%=i._id%>/add" method="POST" class="d-inline-block">
+                                    <button type="submit" class="btn btn1">Add To cart</button>
                                 </form>
-                            <% } %>
+                                <a href="" class="btn btn1"> <i class="fa fa-heart"></i> </a>
+                                <a href="/products/<%=i._id%>" class="btn btn1"> View </a>
+                                <% if (currentUser && currentUser.role === 'seller' && i.author && i.author.toString() === currentUser._id.toString()) { %>
+                                    <form class="d-inline-block" action="/products/<%= i._id %>?_method=DELETE" method="post">
+                                        <button class="btn btn-danger btn1" type="submit"> <i class="fa fa-trash"></i> Delete</button>
+                                    </form>
+                                <% } %>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <% } %>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            <% if (current > 1) { %>
+                <a href="?page=<%= current - 1 %>" class="btn btn-outline-primary">Previous</a>
+            <% } %>
+
+            <% for(let i = 1; i <= pages; i++) { %>
+                <a href="?page=<%= i %>"  class="btn btn-outline-primary"><%= i %></a>
+            <% } %>
+
+            <% if (current < pages) { %>
+                <a href="?page=<%= current + 1 %>" class="btn btn-outline-primary">Next</a>
             <% } %>
         </div>
     </div>
 </div>
+
 <%- include('../partials/footer') %>
 
 
