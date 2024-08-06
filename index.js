@@ -74,8 +74,8 @@ app.use(productRoute);  // to run at avery incomming request
 app.use(reviewRoute);    
 app.use(authRoute);
 app.use(cartRoute);
-
-// seeding database
+ 
+// seeding database  
 // seeddb();
 
 
