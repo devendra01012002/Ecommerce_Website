@@ -64,6 +64,9 @@
                                         <form action="/user/<%=foundProduct._id%>/addwishlist" method="POST" class="d-inline-block">
                                             <button type="submit"class="btn btn1"><i class="fa fa-heart"></i> Add To Wishlist</button>
                                         </form>
+                                        <% if(currentUser && currentUser.role==='seller' ){ %>
+                                            <a href="/products/<%=foundProduct._id%>/edit" class="btn btn1">Edit</a>
+                                            <% } %>
                                     </div>
                                     <div class="mt-3">
                                         <h5 class="mb-0">Small Description</h5>

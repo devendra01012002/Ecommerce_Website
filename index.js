@@ -50,11 +50,11 @@ app.use((req, res, next) => {
     next();
 })
                
-mongoose.connect('mongodb://127.0.0.1:27017/encommerce_holidays')
+mongoose.connect('mongodb+srv://devendra5141697:rajput@cluster0.7phqovt.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0')
     .then(() => {   
         console.log("db connection established")
     })    
-    .catch((err) => {
+    .catch((err) => {   
         console.log("connection error: " + err);
     })
 
