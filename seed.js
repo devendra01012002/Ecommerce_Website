@@ -71,8 +71,11 @@ desc : "About this item\r\nProcessor: 12th Generation Intel Core i5-1235U Proces
     brand: "Signature",
     desc: "About this item\r\nRDS Ball carefully crafted with best quality components\r\nWell Shaped And Perfect In Grip\r\n2 part CLUB Leather Ball\r\nMade Of Top Quality Leather\r\nMake In India",
     category: "sports",
-    reviews: []
-  }]
+    reviews: []   
+  },
+   
+
+]
 async function  seeddb() {
     await Product.insertMany(products)
     .then((products) => {
